@@ -1,0 +1,19 @@
+{% block subject %}Your order from atr.com{% endblock %}
+{% block html %}
+  <h1>Hi {{username}}</h1>
+
+  <p>Here is your order from atr.com aka https://atratr.herokuapp.com/</p>
+
+  <dl>
+  <dt>Products:<dt>
+  {% for p in Products%}
+  <dd>
+  {{p.products.name}} {{p.products.volume}} </dd>
+  <dd>Quantity: {{p.quantity}}</dd>
+  <dd>Total price for this produckt: {{p.products.price}} </dd>
+  <hr>
+  {% endfor %}
+  <dt>Totalprice of your order:</dt>
+  <dd>{{total}} US Dollar</dd>
+      
+{% endblock %}

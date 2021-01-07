@@ -1,0 +1,40 @@
+{% extends 'base.html'%}
+
+{% block content%}
+
+
+<div class="container mt-4 mb-3">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-danger" role="alert">
+      {{ message}}
+    </div>
+    
+    {% endfor %}
+    {% endif %}
+<!--Contactform-->
+	
+<form method="POST" action="{% url 'send_email' %}">
+						{% csrf_token %}
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Name</label>
+    <input type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="Your name">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Email address</label>
+    <input type="email" name="from_email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+  </div>
+
+  
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Your Message</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="text"></textarea>
+  </div>
+  <button type="submit" class="btn btn-success">Send your message</button>
+</form>
+
+<!--/Contactform-->
+</div>
+
+{% endblock%}

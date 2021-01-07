@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_title%}
+<title>Bon 24| My Cart </title>
+{% endblock page_title%}
+
+{% block content %}
+<hr>
+<div class="container">
+	<!--Checkout-button-elements-->
+	<div class="row">
+		<!--empty-block button-alignment-->
+		<div class="d-sm-none d-md-block col-md-9"></div>
+		<!--/empty-block button-alignment-->
+		<!--Checkout-button-->
+		<div class="col-12 col-md-3">
+
+			Total: {{ total }} <small><i class="fa fa-euro"></i></small>
+			<a href="{% url 'checkout' %}" class="btn btn-sm btn-success"
+				role="button"><i class="fa fa-shopping-basket"></i> Checkout</a>
+		</div>
+		<!--/Checkout-button-->
+	</div>
+	<!--/Checkout button-->
+
+
+	<hr>
+	<!--Products-in-cart-->
+	<div class="row">
+		{% for item in cart_item %}
+		<div class="col-12 col-sm-6 col-md-3 col-lg-2 mb-2">
+			
+				<div class="card h-100">
+					
+					<img class="card-img-top" src="{% static  'media/productimage/' %}{{item.product.id}}.jpg" alt="">
+					<div class="card-body">
+                   
+						<h6 class="card-title overflow-control">
+							{{ item.product.name }}
+						</h6>
+						<h6 class="overflow-control">{{ item.product.brand_name }}</h6>
+
+						<h5>{{ item.product.price }} <i class="fas fa-dollar-sign"></i></h5>
+						<small>{{ item.product.volume }}</small>  
+						<small>{{ item.product.id }}</small>
+						<small>{{ item.product.sex }}</small>
+				
+					</div>
+			
+			<div class="card-footer">
+				<div class="col-12">
+					<h5 class="m-1">Qty in Cart:
+					{{item.quantity}}</h5> <p>Total: {% widthratio item.quantity 1 item.product.price %} <i class="fas fa-dollar-sign"></i></p>  </div>
+				<form class="form-inline" method="post" action="{% url 'adjust' item.id %}">
+					{% csrf_token %}
+					
+                        <select name="quantity" class="form-control m-auto col-9" id="exampleFormControlSelect1">
+							{% for n in range %}
+							
+							<option>{{n}}</option>
+						
+						{% endfor %}
+	   
+	  
+</select></div>
+<div class="btn-group m-auto" role="group" aria-label="Basic example">
+<button type="submit" class="btn btn-sm btn-success m-1">Change</button></form>
+<a href="{% url 'delete' item.id %}" class="btn btn-sm btn-success m-1">Delete</a>
+
+                
+			</div>
+
+		</div>
+	</div>
+{% endfor %}
+
+
+	
+
+</div>
+<!--Products-in-cart-->
+<hr>
+
+
+</div>
+{% endblock %}

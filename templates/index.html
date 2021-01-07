@@ -1,0 +1,218 @@
+{% extends 'base.html'%}
+
+
+{% block content %}
+{% load static %}
+
+
+
+
+
+<div class="container-fluid mt-2">
+  {% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-success" role="alert">
+    {{ message }}
+  </div>
+
+  {% endfor %}
+  {% endif %}
+
+  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" data-pause="false">
+
+    <div class="carousel-inner bg-custom rounded mx-auto">
+
+      <div class="carousel-item" data-interval="5000">
+
+        <div class="container">
+          <h1 class="display-4 font-custom pt-custom">بۆن۲٤</h1>
+
+          <p class="font-custom">کۆمپانیای بۆن۲٤ ی سویدی زیاتر لە ۱٥٠٠٠ کاڵای ئەوروپی دەهێنێتە ڕۆژهەڵاتی ناوەڕاست</p>
+
+
+
+        </div>
+
+      </div>
+      <div class="carousel-item active" data-interval="10000">
+
+
+        <div class="container">
+          <h2 class="display-4  font-custom pt-custom">Bon24</h2>
+          <p class="font-custom">
+            Swedish Bon24 is launching over 15000 european products in The Middle East</p>
+
+
+        </div>
+
+      </div>
+      <div class="carousel-item" data-interval="10000">
+
+        <div class="container">
+          <h1 class="display-4 font-custom pt-custom">بون۲٤ </h1>
+
+          <p class="font-custom">شرکة بون۲٤ السویدیة یبدأ ببیع ۱٥٠٠٠منتجات أوروبیة فی الشرق الأوسط</p>
+
+
+
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+  <!--Search box-->
+  <div class="col-12 col-md-10 col-lg-10 col-xl-10 mx-auto mt-3">
+    <form action="{% url 'home'%}" method="GET">
+
+      <div class="input-group input-group-lg">
+
+        <div class="input-group-prepend">
+          <button class="ml-1 btn m-bold btn-outline-secondary" type="submit" id="button-addon1">Search</button>
+        </div>
+        <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon"
+          aria-describedby="button-addon1" name="do_search">
+
+      </div>
+    </form>
+
+    <div class="dropdown">
+      <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Sort by:
+      </button>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a href="{% url 'gType' filter='lth' %}" class="dropdown-item">
+          Price Low to High</a>
+        <a href="{% url 'gType' filter='htl' %}" class="dropdown-item">
+          Price High to Low</a>
+        <a href="{% url 'gType' filter='tr' %}" class="dropdown-item">
+          Top Rated</a>
+        <a href="{% url 'gType' filter='new' %}" class="dropdown-item">
+          New Arrivals</a>
+      </div>
+    </div>
+  </div>
+  <!---->
+
+
+
+  <div class="row m-1 justify-content-md-center mt-3">
+
+
+    {% for product in productObject %}
+
+    <div class="card col-12 col-md-4 mb-2 col-lg-3 col-xl-2 ml-2" style="width: 18rem;">
+
+      <a data-toggle="modal" data-target="#exampleModal{{product.id}}">
+
+        <img src="{{product.image_link}}" class="card-img-top" alt="..."> </a>
+      <div class="card-body">
+        <h6 class="card-title title-custom-hight">{{ product.name|truncatechars:20 }}</h6>
+        <h6 class="brand-name-productCard">{{ product.brand_name }}</h6>
+        <small>
+          <p class="card-text">{{product.volume}} - {{product.price}} $
+          </p>
+        </small>
+        <p class="card-text"><small class="text-muted"> {%if product.sex == "W" %} <i
+              class="fas fa-female fa-2x"></i></a>
+            {% elif product.sex == "M"%} <i class="fas fa-male fa-2x"></i></a> {% else %} <i
+              class="fa fa-transgender "></i> {%endif%} - EAN: {{product.id}}</small></p>
+
+        <form method="POST" id="add_to_cart_form">
+          {% csrf_token %}
+          <input type="hidden" id="product_id" value="{{ product.id }}">
+          <div class="input-group-sm">
+
+            <div class="row">
+              <button class="btn btn-success btn-sm mx-auto col-9" type="submit" id="this_submit">Add to cart <i
+                  class="fa fa-shopping-basket"></i>
+              </button>
+              <select name="quantity" class="col-7 m-1 mx-auto" id="product_quantity">
+                {% for n in range %}
+
+                <option>{{n}}</option>
+
+                {% endfor %}
+              </select>
+
+              <div class="alert alert-primary d-none mt-2 mx-auto" id="alert_message" role="alert">
+                <small>Product added to cart </small>
+              </div>
+
+
+
+            </div>
+          </div>
+        </form>
+
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal{{product.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+
+              <div class="modal-body">
+                <img src="{% static  'media/productimage/' %}{{product.id}}.jpg" class="card-img-top" alt="...">
+              </div>
+              <div class="modal-footer">
+                <p>{{product.name}} - {{product.brand_name}}</p>
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--/Modal-->
+
+      </div>
+
+    </div>
+    {% endfor %}
+
+  </div>
+
+
+
+
+
+
+  <div class="row justify-content-center">
+    <nav aria-label="Page navigation example fixed-bottom col-8">
+      <ul class="pagination">
+        {% if productObject.has_previous %}
+        <li class="mr-0 page-item "><a class="page-link" href="?page=1">First Page</a></li>
+
+
+        {% endif %}
+
+        {% for num in productObject.paginator.page_range %}
+        {% if productObject.number == num %}
+        <li class="page-item"><a class="page-link active1" href="#">{{ num }}</a></li>
+        {% elif num > productObject.number|add:'-5' and num < productObject.number|add:'3' %}
+        <li class="page-item"><a class="page-link" href="?page={{num}}">{{ num }}</a></li>
+
+        {% endif %}
+        {% endfor %}
+
+
+        {% if productObject.has_next %}
+
+        <li class="page-item ml-0"><a class="page-link" href="?page={{ productObject.paginator.num_pages}}">Last
+            Page</a>
+        </li>
+
+        {% endif %}
+
+
+      </ul>
+    </nav>
+
+  </div>
+
+</div>
+{% endblock %}
