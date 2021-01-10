@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+from env import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -134,7 +135,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
 
 
 #email backend
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 TEMPLATED_EMAIL_BACKEND = 'templated_email.backends.vanilla_django.TemplateBackend'
 
 #gmail_send/settings.py
@@ -149,7 +151,7 @@ DEFAULT_FROM_EMAIL = os.getenv('defaul_email')
 
 
 #S3 BUCKETS CONFIG
-
+"""
 AWS_ACCESS_KEY_ID = os.getenv('aws_accesskey')
 AWS_SECRET_ACCESS_KEY = os.getenv('aws_secret_key')
 AWS_STORAGE_BUCKET_NAME = 'bon24'
@@ -159,3 +161,4 @@ AWS_S3_REGION_NAME = 'eu-north-1'
 AWS_S3_CUSTOM_DOMAIN = 'bon24.s3.eu-north-1.amazonaws.com'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+"""

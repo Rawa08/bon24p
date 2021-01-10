@@ -1,0 +1,144 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn,
+.btn:focus,
+.btn:active{
+    box-shadow: none;
+    
+}
+/*Nav */
+.nav-hight-custom {
+    height: 90px;
+    background-color: white;
+}
+
+.bg-w {
+    background-color: white;
+}
+.page-link {
+    border: none;
+    color: black;
+    border-radius: 0%;
+}
+
+.active1 {
+    font-weight: 700;
+    border-bottom: solid;
+    border-color: black;
+}
+
+.logoHolder {
+    background-image: url("../../media/logoRenamed.e814746c8d4c.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: white;
+    background-position-y: center;
+    height: 80px;
+    width: 200px;
+}
+
+.brand-title,
+.brand-title:focus {
+    color: black;
+    border: none;
+    background-color: white;
+    outline: none;
+    font-weight: 900;
+}
+.brand-title:hover{
+    font-weight: 500;
+}
+
+@media(max-width: 595px) {
+    .brand-title,
+    .brand-title:focus {
+        border: none;
+        color: white;
+        background-color: black;
+    }
+   
+    
+}
+
+.btn-outline-secondary{
+    color: black;
+}
+
+
+/* home banner */
+.bg-custom {
+    background-image: url("../../media/sqRenamed.c56def3af774.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right center;
+    height: 300px;
+    background-position-x: 92%;
+    background-color: black;
+    margin-top: 5px;
+    margin-bottom: 8px;
+}
+
+
+/* Font settings */
+.font-custom {
+    color: white;
+    opacity: 100%;
+
+}
+.fs-custom{
+    font-size: 23px;
+}
+
+
+.x-bold {
+    font-weight: 800;
+    font-size: 17px;
+}
+
+.x-bold:hover {
+    font-weight: 500;
+}
+
+.m-bold {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.m-bold:hover {
+    font-weight: 500;
+}
+
+/* Margin and paddings */
+.pt-custom {
+    padding-top: 100px;
+}
+
+
+.ml-custom {
+    margin-left: 70%;
+}
+
+.mt-custom {
+    margin-top: 90px;
+}
+
+/* Product settings */
+
+
+.card {
+    border: none;
+}
+
+
+.title-custom-hight{
+    height: 50px;
+    margin-bottom: 8px;
+}
+
+.brand-name-productCard{
+    margin-bottom: 2px;
+    height: 35px;
+   
+}
