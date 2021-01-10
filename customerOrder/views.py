@@ -5,7 +5,7 @@ from .forms import CustomerShippingForm
 from .models import ProductList
 from django.utils import timezone
 from product.models import Product
-from templated_email import send_templated_mail
+from templated_email import send_templated_mail, InlineImage
 
 
 
@@ -14,6 +14,12 @@ from templated_email import send_templated_mail
 
 
 email_account = os.getenv('defaul_email')
+
+with open('static/media/logoRenamed.png', 'rb') as logo:
+    image = logo.read()
+
+
+inline_image = InlineImage(filename="static/media/logoRenamed.png", content=image)    
 
 def checkout(request):
     
@@ -50,7 +56,7 @@ def checkout(request):
         recipient_list=[order.email],
         context={'username':order.name,
 'Products':myProducts,
-'total':total
+'total':total, 'logo': inline_image
         },
         # Optional:
         # cc=['cc@example.com'],

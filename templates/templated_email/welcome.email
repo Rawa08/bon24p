@@ -1,5 +1,9 @@
 {% block subject %}Your order from atr.com{% endblock %}
 {% block html %}
+<dl>
+<dt><img src="{{ logo }}"></dt>
+</dl>
+
   <h1>Hi {{username}}</h1>
 
   <p>Here is your order from atr.com aka https://atratr.herokuapp.com/</p>
