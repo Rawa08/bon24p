@@ -31,7 +31,7 @@ DEBUG = os.getenv('DEBUG')
 
 
 
-ALLOWED_HOSTS = ['atratr.herokuapp.com', '127.0.0.1', 'atratr1.herokuapp.com']
+ALLOWED_HOSTS = ['bon24.herokuapp.com', '127.0.0.1', 'bon24.eu']
 
 
 # Application definition
