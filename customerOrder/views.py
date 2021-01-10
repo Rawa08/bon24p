@@ -15,7 +15,7 @@ from templated_email import send_templated_mail, InlineImage
 
 email_account = os.getenv('defaul_email')
 
-with open('static/media/logoRenamed.png', 'rb') as logo:
+with open('static/media/logoS.png', 'rb') as logo:
     image = logo.read()
 
 
@@ -61,7 +61,7 @@ def checkout(request):
         # Optional:
         # cc=['cc@example.com'],
         bcc=[email_account],
-        headers={'My-Custom-Header':'Your order from Shex Ater'},
+        headers={'My-Custom-Header':'Bon24.eu - Order Confirmation'},
         # template_prefix="my_emails/",
         # template_suffix="email",
 )           

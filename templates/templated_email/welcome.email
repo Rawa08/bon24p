@@ -6,7 +6,7 @@
 
   <h1>Hi {{username}}</h1>
 
-  <p>Here is your order from atr.com aka https://atratr.herokuapp.com/</p>
+  <p>Thank you for your order</p>
 
   <dl>
   <dt>Products:<dt>
