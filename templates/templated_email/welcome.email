@@ -14,7 +14,7 @@
   <dd>
   {{p.products.name}} {{p.products.volume}} </dd>
   <dd>Quantity: {{p.quantity}}</dd>
-  <dd>Total price for this produckt: {{p.products.price}} </dd>
+  <dd>Total price for this product: {{p.products.price}} </dd>
   <hr>
   {% endfor %}
   <dt>Totalprice of your order:</dt>
