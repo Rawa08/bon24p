@@ -127,9 +127,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_HOST = os.environ.get('DJANGO_STATIC_HOST', '')
-STATIC_URL = STATIC_HOST + '/static/'
-#STATIC_URL = '/static/'
+
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -146,7 +145,7 @@ TEMPLATED_EMAIL_BACKEND = 'templated_email.backends.vanilla_django.TemplateBacke
 
 #gmail_send/settings.py
 #EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = os.getenv('email_host')
 EMAIL_HOST_USER = os.getenv('admin_email')
 EMAIL_HOST_PASSWORD = os.getenv('emailPassword')
 EMAIL_PORT = 587
