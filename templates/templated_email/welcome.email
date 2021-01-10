@@ -1,4 +1,4 @@
-{% block subject %}Your order from atr.com{% endblock %}
+{% block subject %}Bon24.eu - Order Confirmation{% endblock %}
 {% block html %}
 <dl>
 <dt><img src="{{ logo }}"></dt>

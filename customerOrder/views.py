@@ -19,7 +19,7 @@ with open('static/media/logoS.png', 'rb') as logo:
     image = logo.read()
 
 
-inline_image = InlineImage(filename="static/media/logoRenamed.png", content=image)    
+inline_image = InlineImage(filename="static/media/logoS.png", content=image)    
 
 def checkout(request):
     
