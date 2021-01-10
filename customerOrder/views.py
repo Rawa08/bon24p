@@ -13,7 +13,7 @@ from templated_email import send_templated_mail
 
 
 
-admin_mail = os.getenv('admin_email')
+email_account = os.getenv('defaul_email')
 
 def checkout(request):
     
@@ -46,7 +46,7 @@ def checkout(request):
                 
             send_templated_mail(
         template_name='welcome',
-        from_email=admin_mail,
+        from_email=email_account,
         recipient_list=[order.email],
         context={'username':order.name,
 'Products':myProducts,
