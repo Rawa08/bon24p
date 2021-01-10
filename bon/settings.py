@@ -28,8 +28,7 @@ SECRET_KEY = os.getenv('sk')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG')
 
-if DEBUG:
-    from env import *
+
 
 ALLOWED_HOSTS = ['atratr.herokuapp.com', '127.0.0.1', 'atratr1.herokuapp.com']
 
@@ -139,8 +138,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
 
 
 #email backend
-if DEBUG:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 TEMPLATED_EMAIL_BACKEND = 'templated_email.backends.vanilla_django.TemplateBackend'
 
 #gmail_send/settings.py
