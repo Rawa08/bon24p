@@ -54,7 +54,7 @@ def checkout(request):
         },
         # Optional:
         # cc=['cc@example.com'],
-        bcc=[admin_mail],
+        bcc=[email_account],
         headers={'My-Custom-Header':'Your order from Shex Ater'},
         # template_prefix="my_emails/",
         # template_suffix="email",
