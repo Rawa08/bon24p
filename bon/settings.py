@@ -27,11 +27,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('sk')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG')
+DEBUG = False
 
 
 
-ALLOWED_HOSTS = ['bon24.herokuapp.com', '127.0.0.1', 'bon24.eu']
+ALLOWED_HOSTS = ['bon24.herokuapp.com', '127.0.0.1', 'bon24.eu', 'www.bon24.eu']
 
 
 # Application definition
