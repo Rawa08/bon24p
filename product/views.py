@@ -17,7 +17,7 @@ brand = Brand.objects.all().order_by('name')
 
 
 def home(request):
-    active_product = Product.objects.all().filter(show=True).order_by('-score', '-brand_name')
+    active_product = Product.objects.all().filter(show=True).order_by('-score', 'name')
     
     #Paginator
     paginator = Paginator(active_product, 20)
@@ -60,7 +60,7 @@ def gType(request,filter):
         active_product = Product.objects.all().filter(show=True).exclude(p_type="Standard package")         
     
     if filter == 'lth':
-        active_product = Product.objects.all().filter(show=True).order_by('price','-brand_name')
+        active_product = Product.objects.all().filter(show=True, p_type="Standard package").order_by('price','name')
     if filter == 'htl':
         active_product = Product.objects.all().filter(show=True).order_by('-price','-brand_name')
     if filter == 'tr':

@@ -98,7 +98,7 @@ class ProductImportAdmin(ImportExportModelAdmin):
     def priceFix(self, request, queryset):
         objectP = queryset
         for p in objectP:
-            p.price = (p.stock_price*Decimal(1.3))*Decimal(1.3)
+            p.price = (p.stock_price*Decimal(1.2))*Decimal(1.3)
         
             p.save()
              

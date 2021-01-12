@@ -12,7 +12,7 @@ class Customer(models.Model):
     handeld = models.BooleanField(default=False)
     deliverd = models.BooleanField(default=False)
     paid = models.BooleanField(default=False)
-    date = models.DateTimeField(auto_now_add=True, default=timezone.now)
+    date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         template = '{0.name} {0.phone} {0.email} {0.city}'
