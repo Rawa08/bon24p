@@ -16,7 +16,7 @@
 		<!--Checkout-button-->
 		<div class="col-12 col-md-3">
 
-			Total: {{ total }} <small><i class="fa fa-euro"></i></small>
+			Total: {{ total }} <small>$</small>
 			<a href="{% url 'checkout' %}" class="btn btn-sm btn-success"
 				role="button"><i class="fa fa-shopping-basket"></i> Checkout</a>
 		</div>
@@ -41,7 +41,7 @@
 						</h6>
 						<h6 class="overflow-control">{{ item.product.brand_name }}</h6>
 
-						<h5>{{ item.product.price }} <i class="fas fa-dollar-sign"></i></h5>
+						<h5>{{ item.product.price }} $</h5>
 						<small>{{ item.product.volume }}</small>  
 						<small>{{ item.product.id }}</small>
 						<small>{{ item.product.sex }}</small>
