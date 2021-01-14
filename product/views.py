@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Product, Brand
 from django.core.paginator import Paginator
 from django.contrib.postgres.search import SearchVector
-
+from django.views.decorators.gzip import gzip_page
 #test
 import urllib
 #test
@@ -15,7 +15,7 @@ brand = Brand.objects.all().order_by('name')
 
           
 
-
+@gzip_page
 def home(request):
     active_product = Product.objects.all().filter(show=True).order_by('-score', 'name')
     
